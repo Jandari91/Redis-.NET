@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  workerservice:
+    image: ${DOCKER_REGISTRY-}workerservice
+    build:
+      context: .
+      dockerfile: WorkerService/Dockerfile
+  
+  redis:
+    image : redis:latest
+    ports:
+    - 6379:6379

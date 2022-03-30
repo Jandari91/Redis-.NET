@@ -6,6 +6,7 @@ WORKDIR /app
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["WorkerService/WorkerService.csproj", "WorkerService/"]
+COPY ["RedisLibrary/RedisLibrary.csproj", "RedisLibrary/"]
 RUN dotnet restore "WorkerService/WorkerService.csproj"
 COPY . .
 WORKDIR "/src/WorkerService"

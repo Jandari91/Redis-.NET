@@ -11,7 +11,7 @@ namespace WorkerService
         {
             _logger = logger;
 
-            IAddress address = new Address("192.168.100.110", "6379");
+            IAddress address = new Address("redis", "6379");
             RedisLibrary.IConfiguration configuration = new Configuration(address, "test-queue");
             IConnectionFactory connectionFactory = new ConnectionFactory(configuration);
             _queue = new Queue(connectionFactory);
