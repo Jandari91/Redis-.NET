@@ -32,15 +32,16 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Path='Id'}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Value" Binding="{Binding Path='Value'}" IsReadOnly="True"/>
-            </DataGrid.Columns>
 
-            <DataGridTemplateColumn Header="View">
-                <DataGridTemplateColumn.CellTemplate>
-                    <DataTemplate>
-                        <Button Content="Remove" Command="{Binding  RemoveCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
-                    </DataTemplate>
-                </DataGridTemplateColumn.CellTemplate>
-            </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="View">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Remove" Command="{Binding Path=DataContext.RemoveCommand, 
+                                RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
         </DataGrid>
 
     </Grid>
