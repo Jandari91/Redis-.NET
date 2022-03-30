@@ -11,7 +11,7 @@ namespace WorkerService
         {
             _logger = logger;
 
-            IAddress address = new Address("localhost", "6379");
+            IAddress address = new Address("192.168.100.110", "6379");
             RedisLibrary.IConfiguration configuration = new Configuration(address, "test-queue");
             IConnectionFactory connectionFactory = new ConnectionFactory(configuration);
             _queue = new Queue(connectionFactory);
@@ -22,9 +22,9 @@ namespace WorkerService
             while (!stoppingToken.IsCancellationRequested)
             {
                 var result = _queue.Dequeue();
-                _logger.LogDebug(result);
+                _logger.LogInformation(result);
                 _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-                await Task.Delay(1000, stoppingToken);
+                await Task.Delay(10000, stoppingToken);
             }
         }
     }

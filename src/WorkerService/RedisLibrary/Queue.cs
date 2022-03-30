@@ -17,7 +17,8 @@ namespace RedisLibrary
 
         public string Dequeue()
         {
-            return _connection.GetDatabase().ListRightPop(_queueName);
+            var result = _connection.GetDatabase().ListRightPop(_queueName);
+            return result.ToString();
         }
 
         public void Enqueue(string value)
